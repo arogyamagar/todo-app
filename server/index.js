@@ -14,7 +14,7 @@ const PORT = process.env.PORT;
 let database;
 
 app.listen(PORT, () => {
-  console.log("Server is starting on port 5038");
+  console.log("Server Starting.....");
   Mongoclient.connect(CONNECTION_STRING, (error, client) => {
     if (error) {
       throw new Error("Failed to connect to MongoDB");
