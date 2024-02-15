@@ -100,9 +100,9 @@ async function getNotes() {
   isLoading.value = true;
   try {
     const response = await todoService.getNotes();
-    notes.value = response.map((note) => ({ ...note, checked: false }));
+    notes.value = response.map((note) => ({ ...note }));
   } catch (error) {
-    // handle error
+    console.error("Error in getNotes:", error);
   } finally {
     isLoading.value = false;
   }
@@ -116,7 +116,7 @@ async function addNewNotes() {
     newNote.value = "";
     await getNotes();
   } catch (error) {
-    // handle error
+    console.error("Error in addNewNotes:", error);
   } finally {
     isLoading.value = false;
   }
@@ -137,7 +137,7 @@ async function updateNoteStatus(note) {
     console.log(response);
     await getNotes();
   } catch (error) {
-    // handle error
+    console.error("Error in updateNoteStatus:", error);
   } finally {
     isLoading.value = false;
   }
@@ -157,7 +157,7 @@ async function editNote(id, newDescription) {
     await getNotes();
     editModalOpen.value = false;
   } catch (error) {
-    // handle error
+    console.error("Error in editNote:", error);
   } finally {
     isLoading.value = false;
   }
@@ -170,7 +170,7 @@ async function deleteNotes(id) {
     alert(response);
     await getNotes();
   } catch (error) {
-    // handle error
+    console.error("Error in deleteNotes:", error);
   } finally {
     isLoading.value = false;
   }

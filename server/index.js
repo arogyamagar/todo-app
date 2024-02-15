@@ -24,7 +24,6 @@ app.listen(PORT, () => {
   });
 });
 
-// Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send({ error: err.message });
@@ -46,9 +45,8 @@ app.get("/api/todoapp/GetNotes", async (request, response, next) => {
 
 app.post("/api/todoapp/AddNotes", async (request, response, next) => {
   try {
-    const numOfDocs = await database.collection("todoappcollection").count({});
     await database.collection("todoappcollection").insertOne({
-      id: (numOfDocs + 1).toString(),
+      id: Math.random().toString(36).substr(2, 9),
       description: request.body.newNotes,
       isCompleted: false,
     });
