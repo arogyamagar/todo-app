@@ -110,6 +110,10 @@ async function getNotes() {
 
 async function addNewNotes() {
   isLoading.value = true;
+  if (!newNote.value.trim()) {
+    alert("Note cannot be empty");
+    return;
+  }
   try {
     const response = await todoService.addNotes(newNote.value);
     alert(response);
