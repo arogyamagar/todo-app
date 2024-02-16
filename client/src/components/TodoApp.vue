@@ -87,7 +87,7 @@
 
 <script setup>
 import { ref } from "vue";
-import todoService from "./todoservice";
+import todoService from "../api/todoservice";
 
 const heading = "What's the Plan for Today";
 const notes = ref([]);
